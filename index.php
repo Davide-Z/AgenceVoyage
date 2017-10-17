@@ -29,7 +29,7 @@ $app->get ( 'circuit',
 )->bind ( 'circuitlist' );
 
 // circuitshow : affiche les détails d'un circuit
-$app->get ( '/front-office/circuit/{id}', 
+$app->get ( '/circuit/{id}', 
 	function ($id) use ($app) 
 	{
 		$circuit = get_circuit_by_id ( $id );

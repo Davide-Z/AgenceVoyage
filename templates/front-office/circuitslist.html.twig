@@ -11,10 +11,10 @@
         <ul>
         {# Loop through list and creeate the list of circuit items. #}
         {% for circuit in circuitslist %}
-        $available = 0;
+        {% set available = 0 %}
 		{% for prog in circuit.programmations %}
-        {% if prog.dateDepart|date('d-m-Y') > "now"|date('d-m-Y') %}
-        	$available = 1;
+        {% if date(prog.dateDepart) > date() %}
+        {% set available = 1 %}
         {% endif %}
         {% endfor %}
         {% if available %}
