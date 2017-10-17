@@ -17,7 +17,7 @@ $app = require_once 'initapp.php';
 require_once 'agvoymodel.php';
 
 // Routage et actions
-
+date_default_timezone_set("Asia/Jakarta");
 // circuitlist : Liste tous les circuits
 $app->get ( '/circuit', 
     function () use ($app) 
