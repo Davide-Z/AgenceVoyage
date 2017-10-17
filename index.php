@@ -18,7 +18,21 @@ require_once 'agvoymodel.php';
 
 // Routage et actions
 // circuitlist : Liste tous les circuits
-$app->get ( '/circuit', 
+$app->get ( '/circuit0',
+		function () use ($app)
+		{
+			$circuitslist = get_all_circuits ();
+			// print_r($circuitslist);
+			
+			return $app ['twig']->render ( 'circuitslist.html.twig', [
+					'circuitslist' => $circuitslist
+			] );
+}
+)->bind ( 'circuitlist' );
+
+// Routage et actions
+// circuitlist : Liste tous les circuits
+$app->get ( '/front-office/circuit', 
     function () use ($app) 
     {
     	$circuitslist = get_all_circuits ();
@@ -28,6 +42,19 @@ $app->get ( '/circuit',
     			'circuitslist' => $circuitslist
     	] );
     }
+)->bind ( 'circuitlist' );
+
+// circuitlist : Liste tous les circuits
+$app->get ( '/back-office/circuit',
+		function () use ($app)
+		{
+			$circuitslist = get_all_circuits ();
+			// print_r($circuitslist);
+			
+			return $app ['twig']->render ( 'back-office/circuitslist-back-office.html.twig', [
+					'circuitslist' => $circuitslist
+			] );
+}
 )->bind ( 'circuitlist' );
 
 // circuitshow : affiche les détails d'un circuit
