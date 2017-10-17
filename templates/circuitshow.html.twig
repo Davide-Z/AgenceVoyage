@@ -31,13 +31,11 @@
      					</tr>
      				</thead>
      		{%  for programmation in circuit.programmations %}
-     		{% if programmation.dateDepart|date('d-m-Y') > "now"|date('d-m-Y') %}
      			<tr>
      			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
      			   <td>{{ programmation.nombrePersonnes }}</td>
      			   <td>{{ programmation.prix }} euros</td>
      			</tr>
-     		{% endif %}
      		{% endfor %}
      		</table>
     {% else %}
