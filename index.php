@@ -3,7 +3,7 @@
 /**
  * Application d'exemple Agence de voyages Silex
  */
-
+date_default_timezone_set('UTC');
 // require_once __DIR__.'/vendor/autoload.php';
 $vendor_directory = getenv ( 'COMPOSER_VENDOR_DIR' );
 if ($vendor_directory === false) {

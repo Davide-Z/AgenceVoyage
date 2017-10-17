@@ -11,6 +11,7 @@
         <ul>
         {# Loop through list and creeate the list of circuit items. #}
         {% for circuit in circuitslist %}
+        {% if date_diff(circuit.programmations.dateDepart|date('d-m-Y'),date_default_timezone_get()|date('d-m-Y')) > 0) %}
             <li>
           		<a href="{{ path('circuitshow', { 'id' : circuit.id }) }}">{{ circuit.description }}</a>
             </li>
