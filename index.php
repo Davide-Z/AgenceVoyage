@@ -17,7 +17,6 @@ $app = require_once 'initapp.php';
 require_once 'agvoymodel.php';
 
 // Routage et actions
-date_default_timezone_set("Asia/Jakarta");
 // circuitlist : Liste tous les circuits
 $app->get ( '/circuit', 
     function () use ($app) 
@@ -25,7 +24,7 @@ $app->get ( '/circuit',
     	$circuitslist = get_all_circuits ();
     	// print_r($circuitslist);
     	
-    	return $app ['twig']->render ( 'circuitslist.html.twig', [
+    	return $app ['twig']->render ( '/templates/front-office/circuitslist-front-office.html.twig', [
     			'circuitslist' => $circuitslist
     	] );
     }
