@@ -24,7 +24,7 @@ $app->get ( '/circuit',
     	$circuitslist = get_all_circuits ();
     	// print_r($circuitslist);
     	
-    	return $app ['twig']->render ( '/templates/front-office/circuitslist-front-office.html.twig', [
+    	return $app ['twig']->render ( 'front-office/circuitslist-front-office.html.twig', [
     			'circuitslist' => $circuitslist
     	] );
     }
