@@ -69,7 +69,7 @@ $app->get ( '/back-office/circuit',
 					'circuitslist' => $circuitslist
 			] );
 }
-)->bind ( 'circuitlist' );
+)->bind ( 'circuitlist-admin' );
 
 // circuitshow : affiche les détails d'un circuit
 $app->get ( '/back-office/circuit/{id}',
@@ -85,7 +85,7 @@ $app->get ( '/back-office/circuit/{id}',
 					'circuit' => $circuit
 			] );
 }
-)->bind ( 'circuitshow' );
+)->bind ( 'circuitshow-admin' );
 
 // programmationlist : liste tous les circuits programmés
 $app->get ( '/back-office/programmation',
@@ -98,6 +98,6 @@ $app->get ( '/back-office/programmation',
 					'programmationslist' => $programmationslist
 			] );
 }
-)->bind ( 'programmationlist' );
+)->bind ( 'programmationlist-admin' );
 
 $app->run ();
