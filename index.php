@@ -16,7 +16,7 @@ $app = require_once 'initapp.php';
 
 require_once 'agvoymodel.php';
 
-$app->get ( 'circuit',
+$app->get ( '/circuit',
 		function () use ($app)
 		{
 			$circuitslist = get_all_circuits ();
