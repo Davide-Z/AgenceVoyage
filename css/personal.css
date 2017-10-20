@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+@font-face { /* Définition d'une nouvelle police nommée CAC Champagne */
+    font-family: 'snell_roundhand';
+    src: url('/font/SnellRoundhand-Black.ttf') format('truetype');
+}
+
+.heading /* Utilisation de la police qu'on vient de définir sur les titres */
+{
+    font-family: 'snell_roundhand', serif, Arial;
+    font-size: 50px;
+}

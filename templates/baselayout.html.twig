@@ -5,9 +5,12 @@
 <meta charset="utf-8">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/personal.css">
 	<title>{% block headtitle %}Heaven On Earth Agency{% endblock %}</title>
 </head>
 <body>
+<div style="min-height: 90%" class="container">
+
 {% block header %}
 {#
 <div class="row">
@@ -16,15 +19,32 @@
 	</div>
 </div>
 #}
+	
 <div class="row">
-	<div class="col-md-12">
-		<h1>{% block title %}Heaven On Earth Agency{% endblock %}</h1>
-	</div>
+		<p class="heading">{% block title %}<img src="/images/agence-de-voyage1.jpg" height="200" width="200"/>Heaven On Earth Agency{% endblock %}</p>
 </div>
 {% endblock %} {# header #}
-	{% block body %}
-	{% endblock %}
-	{# body #}
+
+{% block menu %}
+<div class="row">
+	<div class="col-md-2">
+		<a href="{{  path('home') }}">Accueil</a>
+	</div>
+	<div class="col-md-2">
+		<a href="{{  path('circuitlist') }}">Circuits</a>
+	</div>
+	<div class="col-md-2">
+		{#<a href="{{  path('contact') }}">Contact</a>#}
+	</div>
+</div>
+{% endblock %} {# menu#}
+
+{% block body %}
+{% endblock %} {# body #}
+
+
+	</div>	<!-- /.container -->
+
 	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
