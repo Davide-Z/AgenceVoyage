@@ -16,6 +16,18 @@ $app = require_once 'initapp.php';
 
 require_once 'agvoymodel.php';
 
+//index : présentation de l'agence
+$app->get ( '/',
+    function () use ($app)
+    {
+
+        return $app ['twig']->render ( 'front-office/home.html.twig');
+}
+)->bind ( 'home' );
+
+
+
+
 $app->get ( '/circuit',
 		function () use ($app)
 		{
