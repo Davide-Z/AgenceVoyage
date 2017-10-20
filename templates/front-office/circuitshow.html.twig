@@ -17,7 +17,7 @@
 			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j.
          de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
          {{ circuit.villeArrivee }}.</p>
-
+<p><a href="{{ path('steps', { 'id' : circuit.id }) }}">Pour plus d'informations, cliquez ici</a></p>
   {% if circuit.programmations is not empty %}
    
   <h2>Programmations de ce circuit</h2>

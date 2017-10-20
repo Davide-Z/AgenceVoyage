@@ -18,7 +18,7 @@
          de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
          {{ circuit.villeArrivee }}. </p>
          
-         <p><a href="{{ path('steps', { 'id' : circuit.id }) }}">Pour plus d'informations, cliquez ici</a></p>
+         <p><a href="{{ path('stepsadmin', { 'id' : circuit.id }) }}">Pour plus d'informations, cliquez ici</a></p>
 
   {% if circuit.programmations is not empty %}
    

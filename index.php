@@ -44,6 +44,22 @@ $app->get ( '/circuit/{id}',
 	}
 )->bind ( 'circuitshow' );
 
+// steps : affiche les détails d'un circuit
+$app->get ( '/circuit/{id}/steps',
+		function ($id) use ($app)
+		{
+			$circuit = get_circuit_by_id ( $id );
+			// print_r($circuit);
+			$programmations = get_programmations_by_circuit_id ( $id );
+			//$circuit ['programmations'] = $programmations;
+			
+			return $app ['twig']->render ( 'front-office/steps.html.twig', [
+					'id' => $id,
+					'circuit' => $circuit
+			] );
+}
+)->bind ( 'steps' );
+
 // programmationlist : liste tous les circuits programmés
 $app->get ( '/programmation', 
 	function () use ($app) 
@@ -69,7 +85,7 @@ $app->get ( '/back-office/circuit',
 					'circuitslist' => $circuitslist
 			] );
 }
-)->bind ( 'circuitlist-admin' );
+)->bind ( 'circuitlistadmin' );
 
 // circuitshow : affiche les détails d'un circuit
 $app->get ( '/back-office/circuit/{id}',
@@ -85,7 +101,23 @@ $app->get ( '/back-office/circuit/{id}',
 					'circuit' => $circuit
 			] );
 }
-)->bind ( 'circuitshow-admin' );
+)->bind ( 'circuitshowadmin' );
+
+// steps : affiche les détails d'un circuit
+$app->get ( '/back-office/circuit/{id}/steps',
+		function ($id) use ($app)
+		{
+			$circuit = get_circuit_by_id ( $id );
+			// print_r($circuit);
+			$programmations = get_programmations_by_circuit_id ( $id );
+			//$circuit ['programmations'] = $programmations;
+			
+			return $app ['twig']->render ( 'back-office/steps.html.twig', [
+					'id' => $id,
+					'circuit' => $circuit
+			] );
+}
+)->bind ( 'stepsadmin' );
 
 // programmationlist : liste tous les circuits programmés
 $app->get ( '/back-office/programmation',
@@ -98,6 +130,6 @@ $app->get ( '/back-office/programmation',
 					'programmationslist' => $programmationslist
 			] );
 }
-)->bind ( 'programmationlist-admin' );
+)->bind ( 'programmationlistadmin' );
 
 $app->run ();
