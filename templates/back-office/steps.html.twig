@@ -2,12 +2,11 @@
 
 {% extends "baselayout.html.twig" %}
 
-{% block title %}{{ circuit.description }} - Steps{% endblock %}
+
 
 {% block body %}
-    <h1>List of steps</h1>
+    <h1>Les étapes du voyage {{ circuit.description }}</h1>
     {% if circuit.etapes is not empty %}
-        <p>Here are all your steps:</p>
         <table>
      	 		<thead>
      					<tr>
@@ -27,3 +26,6 @@
     {% endif %}
 
 {% endblock %} {# body #}
+
+{% block menu %}
+{% endblock %} {# menu#}

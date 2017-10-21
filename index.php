@@ -72,6 +72,24 @@ $app->get ( '/circuit/{id}/steps',
 }
 )->bind ( 'steps' );
 
+//contact
+$app->get ( '/contact',
+		function () use ($app)
+		{
+			
+			return $app ['twig']->render ( 'front-office/contact.html.twig');
+}
+)->bind ( 'Contact' );
+
+//contact
+$app->get ( '/Directeurs',
+		function () use ($app)
+		{
+			
+			return $app ['twig']->render ( 'front-office/directeurs.html.twig');
+}
+)->bind ( 'Directeurs' );
+
 // programmationlist : liste tous les circuits programmés
 $app->get ( '/programmation', 
 	function () use ($app) 

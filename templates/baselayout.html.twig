@@ -12,35 +12,30 @@
 <div style="min-height: 90%" class="container">
 
 {% block header %}
-{#
-<div class="row">
-	<div class="col-md-12">
-		<a href="{{  path('home') }}">Home</a>
-	</div>
-</div>
-#}
-	
 <div class="row">
 		<p class="heading">{% block title %}<img src="/images/agence-de-voyage1.jpg" height="200" width="200"/>Heaven On Earth Agency{% endblock %}</p>
 </div>
 {% endblock %} {# header #}
 
 {% block menu %}
-<div class="row">
-	<div class="col-md-2">
-		<a href="{{  path('home') }}">Accueil</a>
-	</div>
-	<div class="col-md-2">
-		<a href="{{  path('circuitlist') }}">Circuits</a>
-	</div>
-	<div class="col-md-2">
-		{#<a href="{{  path('contact') }}">Contact</a>#}
-	</div>
-</div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">HOEA</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{{  path('home') }}">Accueil</a>
+      <li><a href="{{  path('circuitlist') }}">Circuits</a>
+      <li><a href="{{  path('Directeurs') }}">Directeurs</a>
+      <li><a href="{{  path('Contact') }}">Contact</a>
+    </ul>
+  </div>
+</nav>
 {% endblock %} {# menu#}
 
 {% block body %}
 {% endblock %} {# body #}
+
 
 
 	</div>	<!-- /.container -->
