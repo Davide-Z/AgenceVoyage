@@ -3,24 +3,25 @@
   {{ dump(circuit) }}
 #}
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Details for circuit {{ id }}</title>
-</head>
-<body>
-  <h1>{{ circuit.description }}</h1>
+{# templates/circuitslist.html.twig #}
 
-	<h2>Détails</h2>
+{% extends "baselayout.html.twig" %}
 
-			<p>Description: {{ circuit.description }}</p>
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+<p class="description-title">{{ circuit.description }}</p>
+
+<div class="row">
+  <div class="col-sm-7"><img src="/images/{{ circuit.description |lower }}.jpg" width=600px /></div>
+  <div class="col-sm-5">
+  	<h2>Détails</h2>
+
 
 			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j.
          de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
-         {{ circuit.villeArrivee }}. </p>
-         
-         <p><a href="{{ path('stepsadmin', { 'id' : circuit.id }) }}">Pour plus d'informations, cliquez ici</a></p>
-
+         {{ circuit.villeArrivee }}.</p>
+<p><a href="{{ path('stepsadmin', { 'id' : circuit.id }) }}">Pour plus d'informations, cliquez ici</a></p>
   {% if circuit.programmations is not empty %}
    
   <h2>Programmations de ce circuit</h2>
@@ -45,6 +46,9 @@
     <p>Désolé : pas encore de programmations pour ce circuit.</p>
    
   {% endif %}
+  </div>
+</div>
 
-</body>
-</html>
+
+{% endblock %} {# body #}
+

@@ -2,17 +2,22 @@
 {#
   {{ dump(circuit) }}
 #}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Details for circuit {{ id }}</title>
-</head>
-<body>
-  <h1>{{ circuit.description }}</h1>
 
-	<h2>Détails</h2>
+{# templates/circuitslist.html.twig #}
 
-			<p>Description: {{ circuit.description }}</p>
+{% extends "baselayout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+<p class="description-title">{{ circuit.description }}</p>
+
+
+<div class="row">
+  <div class="col-sm-7"><img src="/images/{{ circuit.description |lower }}.jpg" width=600px /></div>
+  <div class="col-sm-5">
+  	<h2>Détails</h2>
+
 
 			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j.
          de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
@@ -37,13 +42,15 @@
      			   <td>{{ programmation.nombrePersonnes }}</td>
      			   <td>{{ programmation.prix }} euros</td>
      			</tr>
-     		{% endif %}
+	        {% endif %}
      		{% endfor %}
      		</table>
     {% else %}
     <p>Désolé : pas encore de programmations pour ce circuit.</p>
    
   {% endif %}
+  </div>
+</div>
 
-</body>
-</html>
+{% endblock %} {# body #}
+
