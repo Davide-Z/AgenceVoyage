@@ -14,7 +14,7 @@
 {% block header %}
 <div class="row">
 <div class="headerrow">
-  <div class="col-sm-2"><img src="/images/agence-de-voyage1.jpg" height="200" width="200"/></div>
+  <div class="col-sm-2"><img id="headlogo" src="/images/agence-de-voyage1.jpg" height="200" width="200"/></div>
   <div class="col-sm-10"><p class="heading">{% block title %}Heaven On Earth Agency{% endblock %}</p></div>
 </div>
 </div>
@@ -36,7 +36,7 @@
 
 
 				<div class="btn-group pull-right" >
-				<a class="btn btn-default" href="{{  path('circuitlistadmin') }}" role="button">admin</a>
+				<a class="btn btn-default" href="{{  path('circuitlistadmin') }}" role="button">Admin</a>
 				</div>
 			</div>
 		</nav>

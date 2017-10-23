@@ -122,8 +122,8 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 
 .back{
-	margin-left: 100px;
-	margin-left: 100px;
+	margin-top: -25px;
+	margin-left: 140px;
     font-family: Arial;
     font-size: 60px;
 	color: #d9534f;
@@ -134,4 +134,17 @@ tr:nth-child(even){background-color: #f2f2f2}
     margin-right: auto;
 }
 
+#headlogo{
+	margin-bottom: 20px;
+}
+
+
+.lists{
+	text-align: center;
+}
+
+h1{
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
 }
