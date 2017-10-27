@@ -1,0 +1,26 @@
+{# templates/frontoffice/programmationslist.html.twig #}
+
+{% extends "frontoffice/userlayout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block main %}
+
+    <h1>Liste des programmations</h1>
+
+    {% if programmationslist is not empty %}
+        <ul>
+        {# Loop through list and creeate the list of programmation items. #}
+        {% for programmation in programmationslist %}
+        {% if date(programmation.dateDepart) > date() %}
+            <li>
+          		<a class="proglist" href=" {{ path('programmationshow', { 'id' : programmation.id }) }}">{{ programmation.circuit.description }} le {{ programmation.dateDepart|date('d-m-Y')  }}</a>
+           </li>
+         {% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Sorry, you don't have any programmations yet!</p>
+    {% endif %}    
+
+    {% endblock %} {# main #}

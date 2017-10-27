@@ -1,0 +1,15 @@
+{# templates/backoffice/etapenew.html.twig #}
+
+{% extends "backoffice/adminlayout.html.twig" %}
+
+{% block title %}{{ parent() }} - Nouvelle programmation{% endblock %}
+
+{% block main %}
+
+  <h1>Nouvelle programmation</h1>
+
+   Nouvelle programmation pour le circuit {{ circuit.description }}
+   
+  {% include 'backoffice/programmationform.html.twig' %}
+
+{% endblock %} {# main #}

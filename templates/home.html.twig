@@ -1,0 +1,107 @@
+{# templates/home.html.twig #}
+
+{# Template de la page d'accueil de l'application #}
+
+{% extends "baselayout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block menu %}
+<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">HOEA</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="{{  path('home') }}">Accueil</a>
+					<li><a href="{{  path('circuitlist') }}">Circuits</a>
+					<li><a href="{{ path('programmationlist') }}">Programmations</a></li>
+					{#<li><a href="{{  path('Directeurs') }}">Directeurs</a>
+					<li><a href="{{  path('Contact') }}">Contact</a>#}
+				</ul>
+
+
+				<div class="btn-group pull-right" >
+				<a class="btn btn-default" href="{{ path('admin_home') }}" role="button">Admin</a>
+				</div>
+			</div>
+		</nav>
+{% endblock %} {# menu#}
+
+{% block footer %}
+{% endblock %}
+
+{% block main %}
+<h1>Bienvenue à Heaven On Earth Agency</h1>
+<p>"Parce qu'il n’est rien de plus beau que l’instant qui précède le voyage, l’instant où l’horizon de demain vient nous rendre visite et nous dire ses promesses" (Milan Kundera), HOEA cultive le sens de l’écoute et du conseil. Notre profonde connaissance des lieux et des endroits testés et retenus, vous permettra de mieux appréhender les régions dans lesquelles vous vous rendrez. </p>
+
+ <div class="slideshow-container">
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/istanbul.jpg" style="width:100%">
+    <div class="text">Turquie</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/chine.jpg" style="width:100%">
+    <div class="text">Chine</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/france.jpg" style="width:100%">
+    <div class="text">France</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/inde.jpg" style="width:100%">
+    <div class="text">Inde</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/italie.jpg" style="width:100%">
+    <div class="text">Italie</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/liban.jpg" style="width:100%">
+    <div class="text">Liban</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/usa.jpg" style="width:100%">
+    <div class="text">USA</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext"></div>
+    <img src="/images/thailande.jpg" style="width:100%">
+    <div class="text">Thailande</div>
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div> 
+
+<script>var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 5000); // Change image every 2 seconds
+} </script>
+
+{% endblock %}

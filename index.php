@@ -1,165 +1,42 @@
 <?php
 
 /**
- * Application d'exemple Agence de voyages Silex
+ * Point d'entrée de l'application agence de voyages Silex
+ * 
+ * @copyright  2015-2017 Telecom SudParis
+ * @license    "MIT/X" License - cf. LICENSE file at project root
  */
-date_default_timezone_set('UTC');
+
+// Initialisations de l'autoloader et des bibliothèques composer
 // require_once __DIR__.'/vendor/autoload.php';
+// variante autorisant le déport de vendor via variable d'env. COMPOSER_VENDOR_DIR
+date_default_timezone_set('UTC');
 $vendor_directory = getenv ( 'COMPOSER_VENDOR_DIR' );
 if ($vendor_directory === false) {
-	$vendor_directory = __DIR__ . '/vendor';
+  $vendor_directory = __DIR__ . '/vendor';
 }
 require_once $vendor_directory . '/autoload.php';
 
-// Initialisations
+// Initialisations du framework Silex
 $app = require_once 'initapp.php';
 
+// Chargement du gestionnaire de la persistence du modèle dans la base de données
 require_once 'agvoymodel.php';
 
-//index : présentation de l'agence
-$app->get ( '/',
-    function () use ($app)
+
+// Gestion de la page d'accueil
+
+$app->get('/', 
+    function () use ($app) 
     {
+        return $app['twig']->render('home.html.twig');
+    }
+)->bind('home');
 
-        return $app ['twig']->render ( 'front-office/home.html.twig');
-}
-)->bind ( 'home' );
+// chargement des gestionnaires pour le front office
+require_once 'frontoffice.php';
+// chargement des gestionnaires pour le back office
+require_once 'backoffice.php';
 
-
-
-
-$app->get ( '/circuit',
-		function () use ($app)
-		{
-			$circuitslist = get_all_circuits ();
-			// print_r($circuitslist);
-			
-			return $app ['twig']->render ( 'front-office/circuitslist.html.twig', [
-					'circuitslist' => $circuitslist
-			] );
-}
-)->bind ( 'circuitlist' );
-
-// circuitshow : affiche les détails d'un circuit
-$app->get ( '/circuit/{id}', 
-	function ($id) use ($app) 
-	{
-		$circuit = get_circuit_by_id ( $id );
-		// print_r($circuit);
-		$programmations = get_programmations_by_circuit_id ( $id );
-		//$circuit ['programmations'] = $programmations;
-
-		return $app ['twig']->render ( 'front-office/circuitshow.html.twig', [ 
-				'id' => $id,
-				'circuit' => $circuit 
-			] );
-	}
-)->bind ( 'circuitshow' );
-
-// steps : affiche les détails d'un circuit
-$app->get ( '/circuit/{id}/steps',
-		function ($id) use ($app)
-		{
-			$circuit = get_circuit_by_id ( $id );
-			// print_r($circuit);
-			$programmations = get_programmations_by_circuit_id ( $id );
-			//$circuit ['programmations'] = $programmations;
-			
-			return $app ['twig']->render ( 'front-office/steps.html.twig', [
-					'id' => $id,
-					'circuit' => $circuit
-			] );
-}
-)->bind ( 'steps' );
-
-//contact
-$app->get ( '/contact',
-		function () use ($app)
-		{
-			
-			return $app ['twig']->render ( 'front-office/contact.html.twig');
-}
-)->bind ( 'Contact' );
-
-//contact
-$app->get ( '/Directeurs',
-		function () use ($app)
-		{
-			
-			return $app ['twig']->render ( 'front-office/directeurs.html.twig');
-}
-)->bind ( 'Directeurs' );
-
-// programmationlist : liste tous les circuits programmés
-$app->get ( '/programmation', 
-	function () use ($app) 
-	{
-		$programmationslist = get_all_programmations ();
-		// print_r($programmationslist);
-
-		return $app ['twig']->render ( 'programmationslist.html.twig', [ 
-				'programmationslist' => $programmationslist 
-			] );
-	}
-)->bind ( 'programmationlist' );
-
-// backoffice
-
-$app->get ( '/back-office/circuit',
-		function () use ($app)
-		{
-			$circuitslist = get_all_circuits ();
-			// print_r($circuitslist);
-			
-			return $app ['twig']->render ( 'back-office/circuitslist.html.twig', [
-					'circuitslist' => $circuitslist
-			] );
-}
-)->bind ( 'circuitlistadmin' );
-
-// circuitshow : affiche les détails d'un circuit
-$app->get ( '/back-office/circuit/{id}',
-		function ($id) use ($app)
-		{
-			$circuit = get_circuit_by_id ( $id );
-			// print_r($circuit);
-			$programmations = get_programmations_by_circuit_id ( $id );
-			//$circuit ['programmations'] = $programmations;
-			
-			return $app ['twig']->render ( 'back-office/circuitshow.html.twig', [
-					'id' => $id,
-					'circuit' => $circuit
-			] );
-}
-)->bind ( 'circuitshowadmin' );
-
-// steps : affiche les détails d'un circuit
-$app->get ( '/back-office/circuit/{id}/steps',
-		function ($id) use ($app)
-		{
-			$circuit = get_circuit_by_id ( $id );
-			// print_r($circuit);
-			$programmations = get_programmations_by_circuit_id ( $id );
-			//$circuit ['programmations'] = $programmations;
-			
-			return $app ['twig']->render ( 'back-office/steps.html.twig', [
-					'id' => $id,
-					'circuit' => $circuit
-			] );
-}
-)->bind ( 'stepsadmin' );
-
-// programmationlist : liste tous les circuits programmés
-$app->get ( '/back-office/programmation',
-		function () use ($app)
-		{
-			$programmationslist = get_all_programmations ();
-			// print_r($programmationslist);
-			
-			return $app ['twig']->render ( 'programmationslist.html.twig', [
-					'programmationslist' => $programmationslist
-			] );
-}
-)->bind ( 'programmationlistadmin' );
-
+// Appel du framework
 $app->run ();

@@ -1,0 +1,42 @@
+{# templates/backoffice/circuitlist.html.twig #}
+
+{% extends "backoffice/adminlayout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block main %}
+<div class="row">
+	<div class="col-sm-4">
+    <h1>Liste de circuits</h1>
+    </div>
+	<div class="col-sm-3">    
+          <form action="{{ path('admin_circuitnew') }}" method="GET">
+          <button id="newcircuit" class="btn btn-default" type="submit">New circuit</button>
+      </form>
+      </div>
+      </div>
+      
+    {% if circuitslist is not empty %}
+    
+    <div class="row">
+	{# Loop through list and creeate the list of circuit items. #}
+	{% for circuit in circuitslist %}
+	<div class="col-sm-4">
+			<a href="{{ path('admin_circuitshow', { 'id' : circuit.id }) }}">
+			<p class="lists">
+				<img src="/images/flags/{{ circuit.paysDepart | lower }}.png"
+				width=200px
+				href="{{ path('admin_circuitshow', { 'id' : circuit.id }) }}" />
+			</br>
+			{{ circuit.description }}
+		</p>
+		</a>
+	</div>
+	{% endfor %}
+</div>{% else %}
+        <p>Sorry, you don't have any circuits yet!</p>
+    {% endif %}
+    
+
+   
+{% endblock %} {# main #}
